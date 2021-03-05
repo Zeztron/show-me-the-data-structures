@@ -24,7 +24,10 @@ def find_files(suffix, path):
     else: 
         new_paths = os.listdir(path)
         for new_path in new_paths:
-            paths += find_files(suffix, "{}/{}".format(path, new_path))            
+            
+            next_path = os.path.join(path, new_path)
+            paths += find_files(suffix, next_path)
+  
     return paths
 
 print(find_files('.c', 'testdir'))
